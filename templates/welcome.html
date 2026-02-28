@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Botz ™- Bot Status</title>
+    <title>AS Cinemaa™- Bot Status</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Import Modern Font */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
         /* Base styles */
         * {
             margin: 0;
@@ -15,13 +18,14 @@
 
         body, html {
             height: 100%;
-            font-family: 'Orbitron', 'Courier New', monospace;
-            background: #0a0a16;
-            color: #ffffff;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: #090a0f;
+            color: #f1f5f9;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Background effects */
+        /* Background effects - Soft Ambient Glows instead of harsh neon */
         .background {
             position: fixed;
             top: 0;
@@ -30,6 +34,7 @@
             height: 100%;
             z-index: -1;
             overflow: hidden;
+            background: #090a0f;
         }
 
         .grid-lines {
@@ -39,83 +44,71 @@
             width: 100%;
             height: 100%;
             background-image: 
-                linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
+                radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 32px 32px;
         }
 
         .glow-effect {
             position: absolute;
-            width: 400px;
-            height: 400px;
+            width: 60vw;
+            height: 60vw;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(0, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
-            top: 20%;
-            left: 10%;
-            animation: float 15s infinite ease-in-out;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, rgba(0, 0, 0, 0) 60%);
+            top: -20%;
+            left: -10%;
+            filter: blur(60px);
         }
 
         .glow-effect-2 {
             position: absolute;
-            width: 300px;
-            height: 300px;
+            width: 50vw;
+            height: 50vw;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(255, 0, 128, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
-            bottom: 10%;
-            right: 10%;
-            animation: float 12s infinite ease-in-out reverse;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.06) 0%, rgba(0, 0, 0, 0) 60%);
+            bottom: -20%;
+            right: -10%;
+            filter: blur(60px);
         }
 
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            25% { transform: translate(20px, 30px) rotate(5deg); }
-            50% { transform: translate(-15px, 20px) rotate(-5deg); }
-            75% { transform: translate(10px, -15px) rotate(3deg); }
-        }
-
-        /* Loading Animation Styles */
+        /* Loading Animation Styles - Sleek and Minimal */
         .loading-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: #0a0a16;
+            background: #090a0f;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            transition: opacity 0.5s ease;
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
         
         .loading-logo {
-            font-size: 3rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            background: linear-gradient(90deg, #00ffff, #ff00ff, #ffff00, #00ff00);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradientShift 4s ease infinite;
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: #ffffff;
             margin-bottom: 2rem;
         }
         
         .loading-spinner {
-            width: 50px;
-            height: 50px;
-            border: 3px solid rgba(0, 255, 255, 0.3);
-            border-top: 3px solid #00ffff;
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255, 255, 255, 0.05);
+            border-top: 3px solid #38bdf8;
             border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-bottom: 1rem;
+            animation: spin 0.8s ease-in-out infinite;
+            margin-bottom: 1.5rem;
         }
         
         .loading-text {
-            color: #00ffff;
-            font-size: 1rem;
-            letter-spacing: 2px;
+            color: #64748b;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
         }
         
         @keyframes spin {
@@ -130,39 +123,32 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 2rem;
+            padding: 3rem 1.5rem;
             position: relative;
             z-index: 1;
         }
 
         /* Logo and branding */
         .logo-container {
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
             text-align: center;
         }
 
         .logo {
-            font-size: 4.5rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 6px;
-            background: linear-gradient(90deg, #00ffff, #ff00ff, #ffff00, #00ff00);
-            background-size: 300% 300%;
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -2px;
+            background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: gradientShift 4s ease infinite, glitch 2s infinite;
-            position: relative;
             margin-bottom: 0.5rem;
         }
 
         .tagline {
-            font-size: 1.2rem;
-            color: #00ffff;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            font-weight: 300;
-            margin-top: 0.5rem;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+            font-size: 1rem;
+            color: #64748b;
+            font-weight: 400;
+            letter-spacing: 0.5px;
         }
 
         /* Status panels container */
@@ -172,160 +158,134 @@
             gap: 2rem;
             justify-content: center;
             width: 100%;
-            max-width: 1200px;
-            margin: 2rem 0;
+            max-width: 1100px;
+            margin-bottom: 3rem;
         }
 
-        /* Status panel */
+        /* Status panel - Glassmorphism */
         .status-panel {
-            background: rgba(10, 15, 30, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 255, 255, 0.3);
-            border-radius: 15px;
-            padding: 2rem;
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 2.5rem;
             flex: 1;
-            min-width: 300px;
+            min-width: 320px;
             max-width: 500px;
-            box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .status-panel::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, #00ffff, #ff00ff, #ffff00);
-            animation: gradientShift 3s ease infinite;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
         }
 
         .status-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .status-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            font-size: 1.25rem;
+            font-weight: 600;
             color: #ffffff;
         }
 
         .live-indicator {
             display: flex;
             align-items: center;
-            background: rgba(0, 255, 0, 0.2);
-            padding: 0.4rem 1rem;
+            background: rgba(16, 185, 129, 0.1);
+            padding: 0.3rem 0.8rem;
             border-radius: 20px;
-            border: 1px solid rgba(0, 255, 0, 0.5);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #10b981;
+            letter-spacing: 0.5px;
         }
 
         .pulse {
-            width: 12px;
-            height: 12px;
-            background: #00ff00;
+            width: 6px;
+            height: 6px;
+            background: #10b981;
             border-radius: 50%;
-            margin-right: 8px;
-            animation: pulse 2s infinite;
-            box-shadow: 0 0 10px #00ff00;
+            margin-right: 6px;
+            animation: pulse 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
         }
 
         @keyframes pulse {
-            0% { transform: scale(0.9); opacity: 1; }
-            50% { transform: scale(1.2); opacity: 0.7; }
-            100% { transform: scale(0.9); opacity: 1; }
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.2); }
         }
 
-        .status-details {
+        /* Stats Grids */
+        .status-details, .system-stats {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
+            gap: 1rem;
         }
 
-        .status-item {
-            background: rgba(0, 20, 40, 0.5);
-            padding: 1rem;
-            border-radius: 10px;
-            border-left: 3px solid #00ffff;
-        }
-
-        .status-label {
-            font-size: 0.9rem;
-            color: #88ffff;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .status-value {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #ffffff;
-        }
-
-        .status-uptime {
-            background: rgba(0, 20, 40, 0.5);
-            padding: 1rem;
-            border-radius: 10px;
-            border-left: 3px solid #ff00ff;
+        .system-stats {
             margin-top: 1rem;
         }
 
-        /* System stats */
-        .system-stats {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin-top: 1.5rem;
+        .status-item, .system-item, .status-uptime {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1.25rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            transition: transform 0.2s ease, background 0.2s ease;
         }
 
-        .system-item {
-            background: rgba(0, 20, 40, 0.5);
-            padding: 1rem;
-            border-radius: 10px;
-            border-left: 3px solid #ffff00;
+        .status-item:hover, .system-item:hover, .status-uptime:hover {
+            background: rgba(255, 255, 255, 0.04);
+            transform: translateY(-2px);
         }
 
-        /* Progress bars */
+        .status-uptime {
+            margin-top: 1rem;
+        }
+
+        .status-label {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            margin-bottom: 0.4rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-value {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #f8fafc;
+            font-feature-settings: "tnum";
+        }
+
+        /* Progress bars - Smooth and solid colors */
         .progress-container {
-            margin-top: 0.5rem;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
+            margin-top: 0.75rem;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
             overflow: hidden;
         }
 
         .progress-bar {
             height: 100%;
-            border-radius: 4px;
-            transition: width 0.5s ease;
+            border-radius: 10px;
+            transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .cpu-progress {
-            background: linear-gradient(90deg, #ff00ff, #ff5500);
-        }
+        .cpu-progress { background: #38bdf8; }
+        .ram-progress { background: #a855f7; }
+        .disk-progress { background: #10b981; }
 
-        .ram-progress {
-            background: linear-gradient(90deg, #00ffff, #00ff00);
-        }
-
-        .disk-progress {
-            background: linear-gradient(90deg, #ffff00, #ffaa00);
-        }
-
-        /* Action buttons */
+        /* Action buttons - Modern outline/ghost style to solid */
         .actions {
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
-            margin-top: 2rem;
+            gap: 1rem;
             flex-wrap: wrap;
         }
 
@@ -333,155 +293,90 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 0.9rem 1.8rem;
-            font-size: 1rem;
-            font-weight: 600;
-            color: white;
-            text-transform: uppercase;
+            padding: 0.85rem 1.75rem;
+            font-size: 0.95rem;
+            font-weight: 500;
             text-decoration: none;
-            border-radius: 50px;
-            background: linear-gradient(90deg, #6a11cb, #2575fc);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            letter-spacing: 1px;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: 0.5s;
-        }
-
-        .btn:hover::before {
-            left: 100%;
-        }
-
-        .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border-radius: 12px;
+            transition: all 0.2s ease;
         }
 
         .btn-telegram {
-            background: linear-gradient(90deg, #0088cc, #34b7f1);
+            background: rgba(56, 189, 248, 0.1);
+            color: #38bdf8;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+
+        .btn-telegram:hover {
+            background: #38bdf8;
+            color: #0f172a;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(56, 189, 248, 0.15);
         }
 
         .btn-github {
-            background: linear-gradient(90deg, #333, #6e5494);
+            background: rgba(255, 255, 255, 0.05);
+            color: #e2e8f0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-github:hover {
+            background: #f8fafc;
+            color: #0f172a;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
         }
 
         .btn i {
             margin-right: 8px;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
         }
 
-        /* Animations */
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        @keyframes glitch {
-            0% {
-                text-shadow: 2px 2px 0px #ff00ff, -2px -2px 0px #00ffff;
-            }
-            25% {
-                text-shadow: -2px -2px 0px #ff00ff, 2px 2px 0px #00ffff;
-            }
-            50% {
-                text-shadow: 2px -2px 0px #ff00ff, -2px 2px 0px #00ffff;
-            }
-            75% {
-                text-shadow: -2px 2px 0px #ff00ff, 2px -2px 0px #00ffff;
-            }
-            100% {
-                text-shadow: 2px 2px 0px #ff00ff, -2px -2px 0px #00ffff;
-            }
-        }
-
-        /* Footer */
+        /* Footer - Clean text */
         .footer {
-            margin-top: 3rem;
+            margin-top: 4rem;
             text-align: center;
-            color: #88ffff;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
+            color: #64748b;
+            font-size: 0.85rem;
+            line-height: 1.6;
         }
 
         .footer a {
-            color: #ff00ff;
-            text-decoration: none;
-            transition: color 0.3s;
+            color: #94a3b8;
+            text-decoration: underline;
+            text-decoration-color: rgba(148, 163, 184, 0.3);
+            text-underline-offset: 4px;
+            transition: all 0.2s;
         }
 
         .footer a:hover {
-            color: #ffff00;
+            color: #f8fafc;
+            text-decoration-color: #f8fafc;
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .logo {
-                font-size: 3.5rem;
-            }
-            
-            .status-details, .system-stats {
-                grid-template-columns: 1fr;
-            }
-            
-            .actions {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn {
-                width: 100%;
-                max-width: 250px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .logo {
-                font-size: 2.5rem;
-                letter-spacing: 3px;
-            }
-            
-            .tagline {
-                font-size: 1rem;
-            }
-            
-            .status-panel {
-                padding: 1.5rem;
-            }
-            
-            .status-title {
-                font-size: 1.5rem;
-            }
+            .logo { font-size: 2.5rem; }
+            .status-panel { padding: 1.75rem; }
+            .status-details, .system-stats { grid-template-columns: 1fr; }
+            .btn { width: 100%; max-width: 300px; }
+            .actions { flex-direction: column; align-items: center; }
         }
     </style>
 </head>
 <body>
-    <!-- Loading Screen -->
     <div class="loading-screen" id="loadingScreen">
         <div class="loading-logo">Digital Botz ™</div>
         <div class="loading-spinner"></div>
         <div class="loading-text">Initializing Status Dashboard...</div>
     </div>
 
-    <!-- Background effects -->
     <div class="background">
         <div class="grid-lines"></div>
         <div class="glow-effect"></div>
         <div class="glow-effect-2"></div>
     </div>
 
-    <!-- Main Content -->
     <div class="container">
         <div class="logo-container">
             <div class="logo">Digital Botz ™</div>
@@ -489,7 +384,6 @@
         </div>
 
         <div class="panels-container">
-            <!-- Bot Status Panel -->
             <div class="status-panel">
                 <div class="status-header">
                     <div class="status-title">Bot Status</div>
@@ -524,7 +418,6 @@
                 </div>
             </div>
 
-            <!-- System Status Panel -->
             <div class="status-panel">
                 <div class="status-header">
                     <div class="status-title">System Status</div>
@@ -597,8 +490,7 @@
         </div>
 
         <div class="footer">
-            <p>© 2023 RknDeveloper | Powered by <a href="https://t.me/Digital_Botz">Digital Botz™</a> | Repo: <a href="https://github.com/DigitalBotz/Digital-Rename-Bot">Digital-Rename-Bot</a></p>
-            <p>Special Thanks To <a href="https://t.me/Shivshankar_Official">Shivshankar Official</a></p>
+            <p>© 2026 AS Cinemaa</p>
         </div>
     </div>
 
