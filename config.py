@@ -52,10 +52,10 @@ class Config(object):
     LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL", "-1002521835919"))
 
     # free upload limit 
-     FREE_UPLOAD_LIMIT = 10737418240  # calculation 10*1024*1024*1024=results
+     FREE_UPLOAD_LIMIT = 6442450944 # calculation 6*1024*1024*1024=results
 
     # premium mode feature ✅
-    UPLOAD_LIMIT_MODE = True 
+    UPLOAD_LIMIT_MODE = False
     PREMIUM_MODE = True 
     
     #force subs
@@ -164,13 +164,11 @@ V𝟹.𝟶.𝟶 [STABLE]
 
 ☞ Fᴏʀ Exᴀᴍᴘʟᴇ:-
 
-`--change-title @Rkn_Botz
---change-video-title @Rkn_Botz
---change-audio-title @Rkn_Botz
---change-subtitle-title @Rkn_Botz
---change-author @Rkn_Botz`
-
-📥 Fᴏʀ Hᴇʟᴘ Cᴏɴᴛ. @Digital_Botz
+`--change-title 
+--change-video-title 
+--change-audio-title 
+--change-subtitle-title 
+--change-author `
 """
     
     CUSTOM_FILE_NAME = """
@@ -185,8 +183,8 @@ you can pre-add a prefix and suffix along with your new filename
 ➢ /see_suffix - Tᴏ Sᴇᴇ Yᴏᴜʀ Sᴜғғɪx !!
 ➢ /del_suffix - Tᴏ Dᴇʟᴇᴛᴇ Yᴏᴜʀ Sᴜғғɪx !!
 
-Exᴀᴍᴩʟᴇ:- `/set_suffix @Digital_Botz`
-Exᴀᴍᴩʟᴇ:- `/set_prefix @Digital_Botz`
+Exᴀᴍᴩʟᴇ:- `/set_suffix`
+Exᴀᴍᴩʟᴇ:- `/set_prefix`
 """
     
     #⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
@@ -216,14 +214,14 @@ Exᴀᴍᴩʟᴇ:- `/set_prefix @Digital_Botz`
 """
     
     RKN_PROGRESS = """<b>
-╭━━━━━━━━◉🚀◉━━━━━━━━╮
-┃   𝗥𝗞𝗡 𝗣𝗥𝗢𝗖𝗘𝗦𝗦𝗜𝗡𝗚...❱━➣  
-┣━━━━━━━━━━━━━━━━━━━━╯
-┣⪼ 📦 𝗦𝗜𝗭𝗘: {1} | {2}
-┣⪼ 📊 𝗗𝗢𝗡𝗘: {0}%
-┣⪼ 🚀 𝗦𝗣𝗘𝗘𝗗: {3}/s
-┣⪼ ⏰ 𝗘𝗧𝗔: {4}
-╰━━━━━━━━◉🔥◉━━━━━━━━╯</b>"""
+╭━━━━━━━━━━━━━━━╮
+┃   𝗣𝗥𝗢𝗖𝗘𝗦𝗦𝗜𝗡𝗚...  
+┣━━━━━━━━━━━━━━━╯
+┣⪼ 𝗦𝗜𝗭𝗘: {1} | {2}
+┣⪼ 𝗗𝗢𝗡𝗘: {0}%
+┣⪼ 𝗦𝗣𝗘𝗘𝗗: {3}/s
+┣⪼ 𝗘𝗧𝗔: {4}
+╰━━━━━━━━━━━━━━━╯</b>"""
 
 # Rkn Developer 
 # Don't Remove Credit 😔
